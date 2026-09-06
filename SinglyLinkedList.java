@@ -68,16 +68,12 @@ public class SinglyLinkedList<E> {
     // Write your codes below
     @Override
     public String toString(){
-        if (isEmpty()) {
-            return null;
-        }
         StringBuilder returnString = new StringBuilder();
         Node<E> nextNode = head;
-        while (nextNode.getNext() != null) {
+        while (nextNode != null) {
             returnString.append(nextNode.getElement());
             nextNode = nextNode.getNext();
         }
-        returnString.append(tail.getElement());
         return returnString.toString();
     }
 
