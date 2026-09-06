@@ -110,7 +110,7 @@ public class SinglyLinkedList<E> {
     }
 
     public void reverse() {
-        if (size <= 1) {
+        if (size <= 1 || isEmpty()) {
             return;
         }
         Node<E> prev = null;
