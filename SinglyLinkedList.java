@@ -66,15 +66,62 @@ public class SinglyLinkedList<E> {
     }
 
     // Write your codes below
+    @Override
     public String toString(){
-     
+        if (isEmpty()) {
+            return null;
+        }
+        StringBuilder returnString = new StringBuilder();
+        Node<E> nextNode = head;
+        if (nextNode.getNext() == null) {
+            returnString.append(nextNode.getElement());
+        }
+        while (nextNode.getNext() != null) {
+            returnString.append(nextNode.getElement());
+            nextNode = nextNode.getNext();
+        }
+        returnString.append(tail.getElement());
+        return returnString.toString();
     }
 
     public E removeLast(){
-      
+        if (isEmpty()) {
+            return null;
+        }
+
+        E element = tail.getElement();
+
+        if (head == tail) {
+            head = null;
+            tail = null;
+            size = 0;
+            return element;
+        }
+
+        Node<E> current = head;
+        while (current.getNext() != tail) {
+            current = current.getNext();
+        }
+
+        current.setNext(null);
+        tail = current;
+        size--;
+        return element;
     }
 
-    public void reverse(){       
-                 
+    public void reverse() {
+        if (size <= 1) {
+            return;
+        }
+        Node<E> prev = null;
+        Node<E> current = head;
+        while (current != null) {
+            Node<E> next = current.getNext();
+            current.setNext(prev);
+            prev = current;
+            current = next;
+        }
+        tail = head;
+        head = prev;
     }
 }
