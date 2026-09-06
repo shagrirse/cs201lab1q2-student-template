@@ -73,9 +73,6 @@ public class SinglyLinkedList<E> {
         }
         StringBuilder returnString = new StringBuilder();
         Node<E> nextNode = head;
-        if (nextNode.getNext() == null) {
-            returnString.append(nextNode.getElement());
-        }
         while (nextNode.getNext() != null) {
             returnString.append(nextNode.getElement());
             nextNode = nextNode.getNext();
